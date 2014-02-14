@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Article">
+<head>
+  <meta charset="utf-8">
+  <title>Ponify!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lock your workstation or be Ponify'd!">
+  <meta name="author" content="Remy van Elst">
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="page-header">
+				<h1>
+					Ponify! <small>Lock your Mac or else...</small>
+				</h1>
+			</div>
+			<p style="font-size:35px;">
+				<code>curl -s http://ponify.nl/pony.sh | bash</code>
+			</p><img alt="fluttershy.png" src="img/fluttershy.png">
+			<p>
+				Someone didn't lock their Mac? Let them subtly know they should lock their workstation. Paste the above command in a terminal and their desktop background will be changed to a beautiful Pink Pony wallpaper. No terminal? Use the below buttons to tweet/post/plus the Pony love.
+			</p>
+			
+
+   			<div class="row clearfix">
+				<div class="col-md-4 column">
+				<h3>Tweet</h3>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ponify.nl" data-text="You know, I really like colourful Pony's! Check them out:" data-size="large" data-count="none" data-hashtags="ponify.nl" data-dnt="true">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+				</div>
+				<div class="col-md-4 column">
+				  <h3>Facebook</h3>
+				  <a href="http://www.facebook.com/sharer.php?u=http://ponify.nl">
+				  	<img src="img/dislike.png" alt="dislike this on facebook" />
+				  </a>
+				</div>
+				<div class="col-md-4 column">
+				 <h3>Google+</h3>
+					<span itemprop="name">You know, I really like Pink Ponies. And I should lock my workstation better. +ponify.nl</span>
+					<span itemprop="description">You know, I really like Pink Ponies. And I should lock my workstation better.  http://ponify.nl</span>
+					<img itemprop="image" src="http://ponify.nl/img/fluttershy.png">
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h2>
+				About
+			</h2>
+			<p>
+				Simple bash script which uses curl to download <a href="http://ponify.nl/my-little-pony.jpg">this</a> image and based on the OS X version uses applescript to set the wallpaper to that image. <a href="view-source:http://ponify.nl/pony.sh">View source code (GPLv3)</a><hr />
+				Code and HTML by <a href="https://raymii.org">Raymii.org</a>. Inspired by the Ruby code from <a href="https://github.com/mbarb0sa">Michel Barbosa</a>. The nice ascii Pony in the terminal comes from <a href="https://github.com/mbasaglia">this dude/dudette</a>.
+			</p>
+		</div>
+	</div>
+</div>
+</body>
+</html>
