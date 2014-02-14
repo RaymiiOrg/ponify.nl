@@ -20,20 +20,28 @@ PONYURL="http://ponify.nl/my-little-pony.jpg"
 OS_VER_MAJ=$(sw_vers -productVersion | cut -d . -f 1)
 OS_VER_MIN=$(sw_vers -productVersion | cut -d . -f 2)
 
-if [[ ! -f "${HOME}/.pony.jpg" ]]; then
-	curl --silent --location --output "${HOME}/.pony.jpg" "${PONYURL}"
+if [[ ! -f "${HOME}/pony.jpg" ]]; then
+	curl --silent --location --output "${HOME}/pony.jpg" "${PONYURL}"
 fi
 
 
 if [[ "${OS_VER_MIN}" == "9" ]]; then
     echo "OS X 10.9 Mavericks Ponify by raymii.org"
-	osascript -e "tell application \"System Events\" to set picture of every desktop to \"${HOME}/.pony.jpg\"";
+	osascript -e "tell application \"System Events\" to set picture of every desktop to \"${HOME}/pony.jpg\"";
 fi
 
-if [[ "${OS_VER_MIN}" == "8" ]]; then
-	echo "OS X 10.8 Mountain Lion Ponify by raymii.org"
-	osascript -e "tell application \"Finder\" set desktop picture to file \"${HOME}/.pony.jpg\"";
+if [[ "${OS_VER_MIN}" = 8 ]]; then
+        echo "OS X 10.8 Mountain Lion Ponify by raymii.org"
+        echo -e "#!/usr/bin/osascript\nset desktopImage to POSIX file \"${HOME}/pony.jpg\"\ntell application \"Finder\" \n set desktop picture to desktopImage as alias \n end tell" > /tmp/wall.osa
+        osascript /tmp/wall.osa
 fi
+
+if [[ "${OS_VER_MIN}" == "7" ]]; then
+	echo "OS X 10.7 Lion Ponify by raymii.org"
+	defaults write com.apple.desktop Background "{default = {ImageFilePath = \"${HOME/pony.jpg\"; };}"
+fi
+
+
 
 # via https://github.com/mbasaglia
 read -r -d '' Heredoc_var <<'Heredoc_var'
