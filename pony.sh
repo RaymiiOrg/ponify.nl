@@ -17,31 +17,68 @@
 
 PONYURL="http://ponify.nl/my-little-pony.jpg"
 
-OS_VER_MAJ=$(sw_vers -productVersion | cut -d . -f 1)
-OS_VER_MIN=$(sw_vers -productVersion | cut -d . -f 2)
+is_osx() {
+  # [ `/usr/bin/sw_vers -productVersion 2>/dev/null` ]
+  [[ $(uname -s) == "Darwin" ]]
+}
 
-if [[ ! -f "${HOME}/pony.jpg" ]]; then
-	curl --silent --location --output "${HOME}/pony.jpg" "${PONYURL}"
+is_linux() {
+    [[ $(uname -s) == "Linux" ]]
+}
+
+download_pony() {
+    # if you don't want to get ponified, place a nice picture in your
+    # home folder named .pony.jpg. I won't overwrite it.
+    if [[ ! -f "${HOME}/pony.jpg" ]]; then
+        if [[ -f "$(which curl)" ]]; then
+        	curl --silent --location --output "${HOME}/pony.jpg" "${PONYURL}"
+        elif [[ -f "$(which wget)" ]]; then
+            wget --output-document "${HOME}/.pony.jpg" --quiet "${PONYURL}"
+        else
+            echo "Could not download Pony picture. wget or curl not found."
+            exit 1
+        fi
+    fi
+}
+
+if is_osx; then
+
+    OS_VER_MAJ=$(sw_vers -productVersion | cut -d . -f 1)
+    OS_VER_MIN=$(sw_vers -productVersion | cut -d . -f 2)
+
+    download_pony
+    
+    if [[ "${OS_VER_MIN}" == "9" ]]; then
+        echo "OS X 10.9 Mavericks Ponify by raymii.org"
+    	osascript -e "tell application \"System Events\" to set picture of every desktop to \"${HOME}/pony.jpg\"";
+    fi
+    
+    if [[ "${OS_VER_MIN}" = 8 ]]; then
+            echo "OS X 10.8 Mountain Lion Ponify by raymii.org"
+            echo -e "#!/usr/bin/osascript\nset desktopImage to POSIX file \"${HOME}/pony.jpg\"\ntell application \"Finder\" \n set desktop picture to desktopImage as alias \n end tell" > /tmp/wall.osa
+            osascript /tmp/wall.osa
+    fi
+    
+    if [[ "${OS_VER_MIN}" == "7" ]]; then
+    	echo "OS X 10.7 Lion Ponify by raymii.org"
+    	defaults write com.apple.desktop Background "{default = {ImageFilePath = \"${HOME/pony.jpg\"; };}"
+    fi
+    
 fi
 
+if is_linux; then
+    
+    download_pony
 
-if [[ "${OS_VER_MIN}" == "9" ]]; then
-    echo "OS X 10.9 Mavericks Ponify by raymii.org"
-	osascript -e "tell application \"System Events\" to set picture of every desktop to \"${HOME}/pony.jpg\"";
+    if [[ -f $(which gnome-session) ]]; then
+        if [[ $(ps aux | grep -v grep | grep gnome-session) ]]; then
+            if [[ $(gnome-session --version | grep -o -e "[[:digit:]]" | grep "^3") ]]; then
+                echo "Probably GNOME 3 or Unity. Ponifying with gsettings." 
+                gsettings set org.gnome.desktop.background picture-uri "file://${HOME}/.pony.jpg"
+            fi
+        fi
+    fi
 fi
-
-if [[ "${OS_VER_MIN}" = 8 ]]; then
-        echo "OS X 10.8 Mountain Lion Ponify by raymii.org"
-        echo -e "#!/usr/bin/osascript\nset desktopImage to POSIX file \"${HOME}/pony.jpg\"\ntell application \"Finder\" \n set desktop picture to desktopImage as alias \n end tell" > /tmp/wall.osa
-        osascript /tmp/wall.osa
-fi
-
-if [[ "${OS_VER_MIN}" == "7" ]]; then
-	echo "OS X 10.7 Lion Ponify by raymii.org"
-	defaults write com.apple.desktop Background "{default = {ImageFilePath = \"${HOME/pony.jpg\"; };}"
-fi
-
-
 
 # via https://github.com/mbasaglia
 read -r -d '' Heredoc_var <<'Heredoc_var'

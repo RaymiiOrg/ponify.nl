@@ -2,7 +2,7 @@
 <html lang="en" itemscope itemtype="http://schema.org/Article">
 <head>
   <meta charset="utf-8">
-  <title>Ponify! Lock your Mac or spread the Pony love</title>
+  <title>Ponify! Lock your Box or spread the Pony love</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Lock your workstation or be Ponify'd!">
   <meta name="author" content="Remy van Elst">
@@ -18,11 +18,14 @@
 		<div class="col-md-12 column">
 			<div class="page-header" class="center-block">
 				<h1>
-					Ponify! <small>Lock your Mac or else...</small>
+					Ponify! <small>Lock your Box or else...</small>
 				</h1>
 			</div>
 			<p style="font-size:35px;" class="text-center">
 				<code>curl -s http://ponify.nl/pony.sh | bash</code>
+			</p>
+			<p style="font-size:35px;" class="text-center">
+				<code>wget -q -O - http://ponify.nl/pony.sh | bash</code>
 			</p>
 			<p class="center-block">
 			  <img alt="fluttershy.png" src="img/fluttershy.png" class="img-rounded"  /> &nbsp; 
@@ -30,11 +33,21 @@
 			</p>
 			<p class="text-center">
 			  <div class="well">
-				Someone didn't lock their Mac? Let them subtly know they should lock their workstation. Paste the above command in a terminal and their desktop background will be changed to a beautiful Pink Pony wallpaper. No terminal? Use the below buttons to tweet/post/plus the Pony love.
+				Someone didn't lock their Workstation? Let them subtly know they should lock it when they leave it. Paste the above command in a terminal and their desktop background will be changed to a beautiful Pink Pony wallpaper. No terminal? Use the below buttons to tweet/post/plus the Pony love using their social media accounts.
+			  </div>
+			  <div class="well">
+			      <strong>Ponify Rules</strong><br />
+                  <ol>
+                      <li>Someone is not at their workstation and it is unlocked</li>
+                      <li>Ponify them with the script or the social media buttons</li>
+                      <li>Take a photo of the Ponified workstation or Social Media Account</li>
+                      <li>Share the photo in your company</li>
+                      <li>Educate the person on the importance of locking their workstation</li>
+                  </ol>
+                  Ponify.nl is tested on Mac OS X 10.7, 10.8 and 10.9. It also works on Ubuntu 12.04.
 			  </div>
 			</p>
 			
-
    			<div class="row clearfix">
 				<div class="col-md-4 column">
 				<h3>Tweet</h3>
@@ -63,7 +76,7 @@
 				About
 			</h2>
 			<p>
-				Simple bash script which uses curl to download <a href="http://ponify.nl/my-little-pony.jpg">this</a> image and based on the OS X version uses applescript to set the wallpaper to that image. <a href="https://github.com/RaymiiOrg/ponify.nl">View source code (GPLv3)</a><hr />
+				Simple bash script which downloads <a href="http://ponify.nl/my-little-pony.jpg">this</a> image and based on the OS version uses applescript or gsettings to set the wallpaper to that image. <a href="https://github.com/RaymiiOrg/ponify.nl">View source code (GPLv3)</a><hr />
 				Code and HTML by <a href="https://raymii.org">Raymii.org</a>. Inspired by the Ruby code from <a href="https://github.com/mbarb0sa">Michel Barbosa</a>. The nice ascii Pony in the terminal comes from <a href="https://github.com/mbasaglia">this dude/dudette</a>. Not supported nor endorsed by the <a href="http://www.bronycon.org/">Brony Foundation</a>.
 			</p>
 		</div>
