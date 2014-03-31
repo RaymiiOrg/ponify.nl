@@ -27,6 +27,8 @@ is_linux() {
 }
 
 download_pony() {
+    # if you don't want to get ponified, place a nice picture in your
+    # home folder named .pony.jpg. I won't overwrite it.
     if [[ ! -f "${HOME}/pony.jpg" ]]; then
         if [[ -f "$(which curl)" ]]; then
         	curl --silent --location --output "${HOME}/pony.jpg" "${PONYURL}"
@@ -40,6 +42,7 @@ download_pony() {
 }
 
 if is_osx; then
+
     OS_VER_MAJ=$(sw_vers -productVersion | cut -d . -f 1)
     OS_VER_MIN=$(sw_vers -productVersion | cut -d . -f 2)
 
