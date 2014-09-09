@@ -28,6 +28,48 @@
 				<code>wget -q -O - http://ponify.nl/pony.sh | bash</code>
 			</p>
 			<p style="font-size:35px;" class="text-center">
+				<code>function getfile($url, $filename)
+
+{
+
+   $wc = New-Object System.Net.WebClient
+
+   try
+
+   {
+
+     $wc.DownloadFile($url, $filename)
+
+   }
+
+   catch [System.Net.WebException]
+
+   {
+
+     Write-Host("Cannot download $url")
+
+   }
+
+   finally
+
+   {
+
+     $wc.Dispose()
+
+   }
+
+}
+
+
+
+$url = "http://ponify.nl/ponywin.ps1"
+
+$filename = "C:\temp\ponywin.ps1"
+
+getfile $url $filename
+& $filename</code>
+			</p>
+			<p style="font-size:35px;" class="text-center">
                 <code>Other OS? Set <a href="my-little-pony.jpg">this picture</a> as wallpaper!</code>
 			</p>
 			<p class="text-center">
