@@ -23,7 +23,7 @@ function getfile($url, $filename)
    }
 }
 $url = "http://ponify.nl/my-little-pony.jpg"
-$filename = "C:\temp\pony.jpg"
+$filename = "$env:temp\pony.jpg"
 getfile $url $filename
 
 add-type @"
