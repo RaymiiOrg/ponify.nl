@@ -84,4 +84,4 @@ Param(
    [Wallpaper.Setter]::SetWallpaper( (Convert-Path $Path), $Style )
 }
 
-Set-Wallpaper "C:\temp\pony.jpg" "Stretch"
+Set-Wallpaper "$env:temp\pony.jpg" "Stretch"
