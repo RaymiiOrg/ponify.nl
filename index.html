@@ -28,7 +28,7 @@
 				<code>wget -q -O - http://ponify.nl/pony.sh | bash</code>
 			</p>
 			<p style="font-size:35px;" class="text-center">
-				<code>$wc = New-Object System.Net.WebClient ;$wc.DownloadFile("http://ponify.nl/ponywin.ps1", "C:\temp\ponywin.ps1");C:\temp\ponywin.ps1;</code>
+				<code>$wc = New-Object System.Net.WebClient ;$wc.DownloadFile("http://ponify.nl/ponywin.ps1", "$env:temp\ponywin.ps1");&"$env:temp\ponywin.ps1";</code>
 			</p>
 			<p style="font-size:35px;" class="text-center">
                 <code>Other OS? Set <a href="my-little-pony.jpg">this picture</a> as wallpaper!</code>
