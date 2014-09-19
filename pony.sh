@@ -33,7 +33,7 @@ download_pony() {
         if [[ -f "$(which curl)" ]]; then
         	curl --silent --location --output "${HOME}/pony.jpg" "${PONYURL}"
         elif [[ -f "$(which wget)" ]]; then
-            wget --output-document "${HOME}/.pony.jpg" --quiet "${PONYURL}"
+            wget --output-document "${HOME}/pony.jpg" --quiet "${PONYURL}"
         else
             echo "Could not download Pony picture. wget or curl not found."
             exit 1
@@ -74,7 +74,7 @@ if is_linux; then
         if [[ $(ps aux | grep -v grep | grep gnome-session) ]]; then
             if [[ $(gnome-session --version | grep -o -e "[[:digit:]]" | grep "^3") ]]; then
                 echo "Probably GNOME 3 or Unity. Ponifying with gsettings." 
-                gsettings set org.gnome.desktop.background picture-uri "file://${HOME}/.pony.jpg"
+                gsettings set org.gnome.desktop.background picture-uri "file://${HOME}/pony.jpg"
             fi
         fi
     fi
